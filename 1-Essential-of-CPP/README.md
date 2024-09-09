@@ -319,7 +319,179 @@ int main()
     
     return 0;
 }
-
 ```
 
 ### File: `11-Structure-As-Paramenter.cpp`
+```cpp
+#include<iostream> // Include the input-output stream library
+using namespace std; // Use the standard namespace
+
+// Define a structure named Rectangle
+struct Rectangle
+{
+    int length;  // Member to store the length of the rectangle
+    int breadth; // Member to store the breadth of the rectangle
+};
+
+// Function to calculate and print the area of the rectangle
+// Takes a pointer to a Rectangle structure as an argument
+void fun(struct Rectangle *p)
+{
+    // Calculate and print the area of the rectangle
+    cout << p->length * p->breadth << endl;
+}
+
+int main()
+{
+    // Declare and initialize a Rectangle structure variable
+    struct Rectangle r1 = {10, 16};
+    
+    // Call the function fun and pass the address of r1
+    fun(&r1);
+    
+    return 0; 
+}
+```
+
+### File: `12-Structure-and-Functions.cpp`
+```cpp
+#include<iostream> 
+using namespace std;
+
+// Define a structure to represent a rectangle
+struct Rectangle
+{
+    int length;  // Length of the rectangle
+    int breadth; // Breadth of the rectangle
+};
+
+// Function to initialize the dimensions of the rectangle
+void init(struct Rectangle *r, int l, int b)
+{
+    r->length = l;    // Set the length of the rectangle
+    r->breadth = b;   // Set the breadth of the rectangle
+}
+
+// Function to calculate the area of the rectangle
+int area(struct Rectangle r)
+{
+    return r.length * r.breadth; // Return the area (length * breadth)
+}
+
+int main()
+{
+    struct Rectangle r; // Declare a rectangle variable
+    init(&r, 10, 5);    // Initialize the rectangle with length 10 and breadth 5
+    int Area = area(r); // Calculate the area of the rectangle
+    cout << "Area of rectangle: " << Area << endl; // Output the area of the rectangle
+    return 0; 
+}
+```
+
+### File: `13-Class-And-Objects.cpp`
+
+```cpp
+#include<iostream>
+using namespace std;
+
+// Class definition for Rectangle
+class Rectangle {
+    private:
+        int length;  // Length of the rectangle
+        int breadth; // Breadth of the rectangle
+    public:
+        // Constructor to initialize length and breadth
+        Rectangle(int l, int b) {
+            length = l;
+            breadth = b;
+        }
+
+        // Function to calculate the area of the rectangle
+        int area() {
+            return length * breadth;
+        }
+
+        // Function to calculate the perimeter of the rectangle
+        int perimeter() {
+            return 2 * (length + breadth);
+        }
+};
+
+int main() {
+    // Create a Rectangle object with length 10 and breadth 14
+    Rectangle r(10, 14);
+
+    // Calculate the area of the rectangle
+    float area = r.area();
+
+    // Calculate the perimeter of the rectangle
+    float perimeter = r.perimeter();
+
+    // Print the area of the rectangle
+    cout << "Area: " << area << endl;
+
+    // Print the perimeter of the rectangle
+    cout << "Perimeter: " << perimeter << endl;
+
+    return 0;
+}
+```
+
+### File: `14-Template-Class.cpp`
+```cpp
+#include<iostream> // Include the input-output stream library
+using namespace std;
+
+// Template class definition
+template <class T>
+class Maths {
+    private:
+        T a, b; // Private member variables to store the two values
+    public:
+        // Constructor to initialize the values
+        Maths(T x, T y);
+        
+        // Method to add the two values
+        T add();
+        
+        // Method to subtract the two values
+        T sub();
+};
+
+// Template constructor definition
+template <class T>
+Maths<T>::Maths(T x, T y) {
+    this->a = x; // Initialize 'a' with 'x'
+    this->b = y; // Initialize 'b' with 'y'
+}
+
+// Template method to add the two values
+template <class T>
+T Maths<T>::add() {
+    return a + b; // Return the sum of 'a' and 'b'
+}
+
+// Template method to subtract the two values
+template <class T>
+T Maths<T>::sub() {
+    return a - b; // Return the difference between 'a' and 'b'
+}
+
+int main() {
+    // Create an object of Maths with int type
+    Maths<int> m1(5, 3);
+    
+    // Create an object of Maths with float type
+    Maths<float> m2(5.5, 3.2);
+
+    // Perform addition and subtraction on the int object
+    cout << "Addition (int): " << m1.add() << endl;
+    cout << "Subtraction (int): " << m1.sub() << endl;
+
+    // Perform addition and subtraction on the float object
+    cout << "Addition (float): " << m2.add() << endl;
+    cout << "Subtraction (float): " << m2.sub() << endl;
+
+    return 0; 
+}
+```
