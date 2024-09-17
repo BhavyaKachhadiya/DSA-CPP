@@ -84,6 +84,47 @@ public:
         }
     }
 
+    void linearSearch(int key)
+    {
+        int index = -1;
+        for (int i = 0; i < length; i++)
+        {
+            if (A[i] == key)
+            {
+                index = i;
+                cout<<"Found "<<key<<" at the Index of "<<index<<endl;
+                break;
+            }
+            else{
+                cout<<"Element not found in array"<<endl;
+                break;
+            }
+        }
+    }
+
+    int BinarySearch(int key){
+        int lower=0,mid,higher=this->length-1;
+        while(lower<=higher)
+        {
+            mid=(lower+higher)/2;
+            if(A[mid]==key)
+            {
+                cout<<"Found "<<key<<" at the Index of "<<mid<<endl;
+                return 0;
+            }
+            else if(A[mid]<key)
+            {
+                lower=mid+1;
+            }
+            else if(A[mid]>key)
+            {
+                higher=mid-1;
+            }
+        }
+        cout<<"Element not found in array"<<endl;
+        return -1;
+
+    }
     ~Array()
     {
         delete[] A;
@@ -105,5 +146,7 @@ int main()
     arr.display();
     arr.remove();
     arr.display();
+    arr.linearSearch(2);
+    arr.BinarySearch(2);
     return 0;
 }
